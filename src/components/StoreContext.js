@@ -7,9 +7,6 @@ const StoreContext = function({children}){
     const [showPopUp, setShowPopUp] = useState(false)
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [toAdd, setToAdd] = useState([])
-    
-
-
 
     return(
         <store.Provider
@@ -20,7 +17,6 @@ const StoreContext = function({children}){
             setToAdd,
             showPopUp,
             setShowPopUp,
-
         }}
         >
             {children}

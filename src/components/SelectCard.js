@@ -56,13 +56,11 @@ const SelectCard = function({selectedIndex, setSelectedIndex}){
             setSelectedProducts(() => {
                 const newArr = [...selectedProducts]
                 newArr.splice(selectedIndex, 1, ...toAdd)
-                console.log(newArr)
                 return newArr
             })
         }else{
             setSelectedProducts(() => {
                 const updated = [...selectedProducts, ...toAdd]
-                console.log(updated)
                 return updated
             })
         }
