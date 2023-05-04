@@ -53,7 +53,7 @@ const HomePage = function(){
 
                         {/* Headings */}
                             {
-                                selectedProducts.length >=1 || showPreAddSection &&
+                                (selectedProducts.length >=1 || showPreAddSection) &&
                                 <div className="text-[14px] leading-[16px] sfMedium text-[#000000] text-opacity-90 flex gap-[170px] pl-[50px] mb-[16px]">
                                     <p>Product</p>
                                     <p>Discount</p>

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import dragBtn from '../assets/images/dragBtn.png'
 import editBtn from '../assets/images/editBtn.png'
 import { UseStoreContext } from './StoreContext'
