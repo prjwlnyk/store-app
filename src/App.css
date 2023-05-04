@@ -1,0 +1,140 @@
+@font-face {
+    font-family: "sfRegular";
+    src: url("../src/assets/fonts/SF-Pro-Text-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: "sfMedium";
+    src: url("../src/assets/fonts/SF-Pro-Text-Medium.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: "sfSemiBold";
+    src: url("../src/assets/fonts/SF-Pro-Text-Semibold.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: "sfBold";
+    src: url("../src/assets/fonts/SF-Pro-Text-Bold.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+:root{
+    --sfRegular: sfRegular;
+    --sfMedium: sfMedium;
+    --sfSemiBold: sfSemiBold;
+    --sfBold: sfBold;
+}
+
+.sfRegular {
+    font-family: var(--sfRegular);
+}
+
+.sfMedium {
+    font-family: var(--sfMedium);
+}
+
+.sfSemiBold {
+    font-family: var(--sfSemiBold);
+}
+
+.sfBold {
+    font-family: var(--sfBold)
+}
+
+
+
+.selectCard::before{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    content: '';
+    z-index: 50;
+    background-color: black;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.selectCard{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 60;
+    opacity: 1;
+}
+
+/* check box */
+
+.checkContainer {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+}
+  
+/* Hide the default checkbox */
+input[type=checkbox] {
+    visibility: hidden;
+}
+  
+.geekmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: none;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+  
+/* Specify the background color to be
+shown when checkbox is checked */
+.checkContainer input:checked ~ .geekmark {
+    background-color: #008060;
+    border: none;
+}
+  
+/* It is not be shown when not checked */
+.geekmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+/* Display checkmark when checked */
+.checkContainer input:checked ~ .geekmark:after {
+    display: block;
+}
+  
+
+.checkContainer .tickMarkOne:after {
+    top: 12.5%;
+    left: 35%;
+    width: 7px;
+    height:14px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkContainer .tickMarkTwo:after {
+    top: 0%;
+    left: 35%;
+    width: 7px;
+    height:14px;
+    border: solid white;
+    transform: rotate(0deg);
+    border-width: 0 0 2px 0;
+}
+
