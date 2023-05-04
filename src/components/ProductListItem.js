@@ -82,8 +82,8 @@ const ProductListItem = function({data,checkHandler, handleClick, removedMain}){
                 <p className='text-[16px] leading-[24px] sfRegular'>{data.title}</p>
             </CardElem>
             <div>
-                {
-                    variants.map(elem => 
+                {   
+                    variants?.map(elem => 
                         <VariantListItem key={elem.id} varClickHandler={() =>varClickHandler(elem)}  data={elem} customVarList={customVarList}/>
                     )
                 }

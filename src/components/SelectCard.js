@@ -11,16 +11,37 @@ import { UseStoreContext } from './StoreContext'
 const SelectCard = function({selectedIndex, setSelectedIndex}){
 
     const [productList, setProductList] = useState([])
+    const [fetchedProducts, setFetchedProducts] = useState([])
     const [removedMain, setRemovedMain] = useState(false)
     const [searchInput, setSearchInput] = useState('')
     const [page, setPage] = useState(1)
     const storeDetails = UseStoreContext()
     const { toAdd, setToAdd, selectedProducts, setSelectedProducts, setShowPopUp} = storeDetails;
     const selectRef = useRef(null)
+    const [pageChanged, setPageChanged] = useState(false)
+
+    const secondFetch = async function(){
+        const moreData = await dataFetch(searchInput, page)
+        if(moreData){
+            setProductList(() => {
+                const updated = [...productList, ...moreData]
+                return updated;
+            })
+            setPageChanged(false)
+        }
+    }
+
+
+    useEffect(() => {
+        if(pageChanged){
+            secondFetch()
+        }
+    }, [page])
 
 
     // Fetching List
     const productFetch= async function(){
+        console.log(page)
         const list = await dataFetch(searchInput, page);
         if(list){
             setProductList(list)
@@ -29,18 +50,24 @@ const SelectCard = function({selectedIndex, setSelectedIndex}){
     }
 
     const scrollHandler = () => {
+        const scrollHeight = selectRef.current.scrollHeight;
+        const clientHeight = selectRef.current.clientHeight;
+        const scrollTop = selectRef.current.scrollTop
+        // console.log(selectRef.current.scrollHeight, selectRef.current.scrollTop, selectRef.current.clientHeight)
+        // setPageChanged(false)
         if(selectRef.scrollTop == 0){
             setPage((prev) => prev -1)
         } else
-       if( selectRef.current.scrollHeight - selectRef.current.scrollTop === (selectRef.current.clientHeight)){
+       if(((scrollHeight - scrollTop) >= (clientHeight)) && ((scrollHeight - scrollTop) <= (clientHeight + 2)) ){
             setPage((prev) => prev + 1)
+            setPageChanged(true)
        }
     }
 
 
     useEffect(() => {
         productFetch()
-    }, [searchInput, page])
+    }, [searchInput])
     // End of Fetching List
 
     const searchFunction = (e) => {

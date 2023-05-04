@@ -10,12 +10,12 @@ import { DragDropContext, Draggable, Droppable} from '@hello-pangea/dnd'
 
 const MainSelected = function({index, product, setSelectedIndex, dragStartHandler}){
 
+    const {variants} = product;
+    const [variantList, setVariantList] = useState(variants)
     const [discountVal, setDiscountVal] = useState('0')
     const [selectVal, setSelectVal] = useState(null)
     const [addDiscount, setAddDiscount] = useState(false)
     const [showVariants, setShowVariants] = useState(true)
-    const {variants} = product;
-    const [variantList, setVariantList] = useState(variants)
 
     const storeDetails = UseStoreContext()
     const {selectedProducts, setSelectedProducts, setShowPopUp} = storeDetails;
@@ -151,7 +151,7 @@ const MainSelected = function({index, product, setSelectedIndex, dragStartHandle
                             {(provided) => (
                                 <div {...provided.droppableProps} ref={provided.innerRef} className='pl-[60px] pt-[18px] flex flex-col gap-[20px]'>
                                     {
-                                        variantList.map((elem, index) => 
+                                        variantList?.map((elem, index) => 
                                             <Draggable key={`${elem.id}`} draggableId={`${elem.id}`} index={index}>
                                                 {(provided) => (
                                                     <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>

@@ -4,7 +4,9 @@ export const dataFetch = async function(str='', page=1){
         let res = await fetch(`https://stageapibc.monkcommerce.app/admin/shop/product?search=${str}&page=${page}`)
         let result = await res.json()
         if(res.ok){
-            return result
+            if(result[0].variants.length >=1 ){
+                return result
+            }
         }
     }
     catch(err){
