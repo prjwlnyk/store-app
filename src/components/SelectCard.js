@@ -31,7 +31,6 @@ const SelectCard = function({selectedIndex, setSelectedIndex}){
         }
     }
 
-
     useEffect(() => {
         if(pageChanged){
             secondFetch()
@@ -41,7 +40,6 @@ const SelectCard = function({selectedIndex, setSelectedIndex}){
 
     // Fetching List
     const productFetch= async function(){
-        console.log(page)
         const list = await dataFetch(searchInput, page);
         if(list){
             setProductList(list)
@@ -58,7 +56,7 @@ const SelectCard = function({selectedIndex, setSelectedIndex}){
         if(selectRef.scrollTop == 0){
             setPage((prev) => prev -1)
         } else
-       if(((scrollHeight - scrollTop) >= (clientHeight)) && ((scrollHeight - scrollTop) <= (clientHeight + 2)) ){
+       if(((scrollHeight - scrollTop) >= (clientHeight)) && ((scrollHeight - scrollTop) <= (clientHeight + 1.33)) ){
             setPage((prev) => prev + 1)
             setPageChanged(true)
        }
