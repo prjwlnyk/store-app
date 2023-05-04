@@ -1,7 +1,7 @@
 {
   "name": "store-app",
   "version": "0.1.0",
-  "homepage": "https://prjwlnyk.github.io/store-app",
+  "homepage": "",
   "private": true,
   "dependencies": {
     "@hello-pangea/dnd": "^16.2.0",
