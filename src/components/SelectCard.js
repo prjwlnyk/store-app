@@ -56,7 +56,7 @@ const SelectCard = function({selectedIndex, setSelectedIndex}){
         if(selectRef.scrollTop == 0){
             setPage((prev) => prev -1)
         } else
-       if(((scrollHeight - scrollTop) >= (clientHeight)) && ((scrollHeight - scrollTop) <= (clientHeight + 1.33)) ){
+       if(((scrollHeight - scrollTop) >= (clientHeight)) && ((scrollHeight - scrollTop) <= (clientHeight + 1)) ){
             setPage((prev) => prev + 1)
             setPageChanged(true)
        }

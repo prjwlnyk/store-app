@@ -8,14 +8,10 @@ export const dataFetch = async function(str='', page=1){
         let result = await res.json()
         
         if(res.ok){
-            console.log(result)
-            console.log(result[0].variants.length)
             const filtered  = result.filter((elem) => elem.variants.length !== 0)
+
             if(filtered.length === result.length){
                 return filtered
-            }
-            else {
-                console.log("INCOMPLETE")
             }
         }
     }
