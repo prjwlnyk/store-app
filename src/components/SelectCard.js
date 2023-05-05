@@ -23,10 +23,14 @@ const SelectCard = function({selectedIndex, setSelectedIndex}){
     const secondFetch = async function(){
         const moreData = await dataFetch(searchInput, page)
         if(moreData){
-            setProductList(() => {
-                const updated = [...productList, ...moreData]
-                return updated;
-            })
+            const y = moreData?.filter(elem => elem.variants.length >=1)
+            if(y.length >=1){
+                setProductList(() => {
+                    const updated = [...productList, ...y]
+                    return updated;
+                })
+       
+            }
             setPageChanged(false)
         }
     }
@@ -42,7 +46,14 @@ const SelectCard = function({selectedIndex, setSelectedIndex}){
     const productFetch= async function(){
         const list = await dataFetch(searchInput, page);
         if(list){
-            setProductList(list)
+            const x = list?.filter((elem) => elem.variants.length >= 1)
+            if(x.length>=1){
+                setProductList(() => {
+                    const updated = [...x]
+                    return updated
+                })
+            }
+        
             selectRef.current.scrollTop = 0;
         }
     }
